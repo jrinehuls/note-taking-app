@@ -2,10 +2,12 @@ import React, {useState} from "react";
 
 function CreateArea(props) {
 
-    const [note, setNote] = useState({
+    const defaultNote = {
         title: "",
         content: ""
-    });
+    }
+
+    const [note, setNote] = useState(defaultNote);
 
     // Sets values for the title and content of the note as it's being typed.
     function handleChange(event) {
@@ -24,6 +26,7 @@ function CreateArea(props) {
     if function takes args, I think */
     function submitNote() {
         props.onAdd(note);
+        setNote(defaultNote);
     }
 
     return (
