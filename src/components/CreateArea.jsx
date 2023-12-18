@@ -7,9 +7,10 @@ function CreateArea(props) {
         content: ""
     });
 
+    // Sets values for the title and content of the note as it's being typed.
     function handleChange(event) {
         const {name, value} = event.target;
-        // Need name in [] to get value stored in name, otherwise, would be accessing a kew called name.
+        // Need name in [] to get value stored in name, otherwise, would be accessing a key called name.
         setNote(prevNote => {
             return {
                 ...prevNote,
@@ -18,12 +19,12 @@ function CreateArea(props) {
         })
     }
 
+    /* Since button is in form, it needs to be type=button to prevent page refresh.
+    If it wasn't in form, that would not be necessary. In onClick, Only needs arrow
+    if function takes args, I think */
     function submitNote() {
         props.onAdd(note);
     }
-
-    // Since button is in form, it needs to be type=button to prevent page refresh.
-    // If it wasn't in form, that would not be necessary.
 
     return (
         <div>
@@ -34,7 +35,7 @@ function CreateArea(props) {
                     value={note.content}
                     placeholder="Take a note..."
                     rows="3" />
-                <button type='button' onClick={submitNote /* Only needs arrow if function takes args, I think */ }>Add</button>
+                <button type='button' onClick={submitNote}>Add</button>
             </form>
         </div>
     );
